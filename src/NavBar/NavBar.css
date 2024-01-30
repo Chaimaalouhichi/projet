@@ -1,0 +1,23 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+
+    border-bottom: 1px solid rgba(0, 0,0, 0.15);
+    padding: 15px;
+    background-color: #131523;
+    color: white;
+   
+  }
+
+
+.navbar-center {
+  display: flex;
+  align-items: center;
+}
+
+.logo,
+.fa-bell,
+.logo-container {
+  margin: 0 10px; /* Ajoutez une marge entre les éléments */
+}

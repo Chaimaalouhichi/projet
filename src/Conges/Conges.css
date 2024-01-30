@@ -1,0 +1,27 @@
+.container {
+    width: 80%;
+    margin: 0 auto; /* Centre le conteneur horizontalement */
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  .Cards{
+    display: flex;
+    gap:10px;
+  }
+  .h2 {
+    font-family: 'Arial';
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+    color: black;
+    margin-bottom: 20px;
+    min-width: 300px;
+  }
+  .h2 {
+    font-family: 'Arial';
+    font-size: 12px;
+    font-weight: bold;
+    text-align: right;
+    color: white;
+   
+  }
