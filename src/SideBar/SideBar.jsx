@@ -24,6 +24,10 @@ function SideBar() {
 
     navigate('/Dashbord');
   };
+  const handleChange = () => {
+
+    navigate('/Historique');
+  };
   return (
 
     <div className="sidebar">
