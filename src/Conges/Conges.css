@@ -24,4 +24,9 @@
     text-align: right;
     color: white;
    
+  }.table-container {
+    overflow-x: auto;
+  }
+  .css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root {
+    height: 35px;
   }

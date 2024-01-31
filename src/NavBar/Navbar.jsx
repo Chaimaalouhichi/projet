@@ -10,7 +10,7 @@ function Navbar() {
         <div className="logo">
         <img src={logoImage} alt="Logo" />
         </div>
-        <div className='fa-bell' style={{marginLeft:'51rem'}}>
+        <div className='fa-bell' style={{marginLeft:'58rem'}}>
           <Icon name="bell" />
         </div>
         <div className="logo-container">
