@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -31,8 +31,8 @@ import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
-
-
+import Validation from './Validation'
+import React, { useState } from 'react';
 const currencies = [
   {
     value: 'dd',
@@ -46,8 +46,9 @@ const currencies = [
 
 ];
 
+
   
-  
+
 
 
 function createData(Employe, TypeConges, Jours, Debutconge, FinConges, Solde) {
@@ -55,6 +56,9 @@ function createData(Employe, TypeConges, Jours, Debutconge, FinConges, Solde) {
 }
 
 function Conges() {
+ 
+  //
+ 
   const navigate = useNavigate();
   const [value, setValue] = useState(0);
 
@@ -88,8 +92,31 @@ function Conges() {
     Swal.fire('Sucess!','Ajout de conge confirm ')
    
   }
+//saiser
 
+ 
 
+const [values, setValues] = useState({
+  name: '',
+  option: '',
+  Debutconge: '',
+  FinConges: '',
+});
+
+const [errors, setErrors] = useState({}); // Initialize errors as an empty object
+
+// Function to handle input changes
+const handleInput = (event) => {
+  const newObj = { ...values, [event.target.name]: event.target.value };
+  setValues(newObj);
+};
+
+// Function to handle form validation
+const handleValidation = (event) => {
+  event.preventDefault();
+  const validationErrors = Validation(values); // Assuming you have a function named Validation
+  setErrors(validationErrors);
+};
   return (
 
     <div className='nom'>
@@ -108,14 +135,16 @@ function Conges() {
               </IconButton>
             </DialogTitle>
             <DialogContent>
+            <form >
               <Grid container spacing={2} alignItems="center">
                 <Grid item xs={6}>
-                  <InputLabel htmlFor="outlined-basic"style={{color: '#434141'}}>Nom ou numéro d'employé</InputLabel>
-                  <TextField id="outlined-basic" variant="outlined" fullWidth />
+                  <InputLabel    htmlFor="outlined-basic"style={{color: '#434141'}}>Nom ou numéro d'employé</InputLabel>
+                  <TextField  for='name'  id="outlined-basic" variant="outlined" fullWidth onChange={handleInput} />
+                  {errors.name && <p style={{color:"red"}}>{errors.name}</p>}
                 </Grid>
                 <Grid item xs={6}>
-                  <InputLabel htmlFor="outlined-basic" style={{color: '#434141'}} >Type Congé</InputLabel>
-                  <TextField
+                  <InputLabel  htmlFor="outlined-basic" style={{color: '#434141'}} >Type Congé</InputLabel>
+                  <TextField for='option'  onChange={handleInput}
                     id="outlined-select-currency-native"
                     select
                     defaultValue="EUR"
@@ -130,16 +159,19 @@ function Conges() {
                       <option key={option.value} value={option.value} >
                         {option.label}
                       </option>
-                    ))}
+                    ))} {errors.option && <p style={{color:"red"}}>{errors.option}</p>}
                   </TextField>
                 </Grid>
                 <Grid item xs={6}>
+
                   <InputLabel htmlFor="outlined-basic" style={{color: '#434141'}}>Début de congé</InputLabel>
-                  <TextField id="outlined-basic2" variant="outlined" fullWidth />
+                  <TextField  for='Debutconge'  id="outlined-basic2" variant="outlined" fullWidth  onChange={handleInput}
+                  /> {errors.Debutconge && <p style={{color:"red"}}>{errors.Debutconge}</p>}
                 </Grid>
                 <Grid item xs={6}>
                   <InputLabel htmlFor="outlined-basic" style={{color: '#434141'}}>Fin de congé</InputLabel>
-                  <TextField id="outlined-basic2" label="Outlined 2" variant="outlined" fullWidth />
+                  <TextField  for='FinConges' id="outlined-basic2" label="Outlined 2" variant="outlined" fullWidth onChange={handleInput} />
+                  {errors.FinConges && <p style={{color:"red"}}>{errors.FinConges}</p>}
                 </Grid>
                 <Grid item xs={6}>
                   <Button variant="text" onClick={handleClick} style={{ color: 'gray' }}>Décision</Button>
@@ -151,12 +183,13 @@ function Conges() {
                   <Button variant="outlined" style={{ color: '#1d72ff' }}>Refusée</Button>
                 </Grid>
               </Grid>
+              </form>
             </DialogContent>
 
             <DialogActions style={{  marginBottom: '28px'}}>
 
               <Button  >Annuler</Button>
-              <Button variant="contained" onClick={handleSucessClick}  >Confirm</Button>
+              <Button variant="contained"  onSubmit={handleValidation} >Confirm</Button>
 
             </DialogActions>
           </Dialog>

@@ -47,7 +47,7 @@ function Historique() {
 
   return (
     <TableContainer component={Paper} style={{boxShadow: '0px 13px 20px #80808029'}}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table"  style={{marginTop: '5rem', width: '50px',marginleft: '30rem'}} >
+      <Table sx={{ minWidth: 650 }} aria-label="simple table"  style={{marginTop: '5rem', width: '50px',marginleft: '80rem'}} >
         <TableHead>
           <TableRow>
             <TableCell className='style'>Type de Congé </TableCell>
